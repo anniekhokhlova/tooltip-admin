@@ -5,7 +5,7 @@ import {Tooltip} from "./Tooltip";
 import {ImageDetailsView} from "./ImageDetailsView";
 
 const StyledGrid = styled.div`
-        width: 75%;
+        width: 1040px;
         height: 1000px;
         display: flex;
         flex-flow: row wrap;

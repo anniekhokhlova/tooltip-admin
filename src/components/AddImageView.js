@@ -2,28 +2,63 @@ import React, {useState} from 'react';
 import {UploadImage} from "./UploadImage";
 import {TooltipForm} from './AddTooltipForm';
 import styled from 'styled-components';
-import {Image} from "./Image";
-import {Tooltip} from "./Tooltip";
+import {Button} from './Button';
+import {CloseBtn} from "./CloseBtn";
+import {Backdrop} from "./Backdrop";
+
+const StyledAddView = styled.div`
+    width: 950px;
+    height: 600px;
+    border: 1px solid #eee;
+    box-shadow: 0 1px 1px #ccc;
+    padding: 10px;
+    margin: 10px auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    background-color: white;
+    position: fixed;
+    top: 3%;
+    z-index: 101;
+    background-color: #f7fcff;
+    
+    & > ${Button} {
+        position: absolute;
+        bottom: 3%;
+        right: 3%;
+    }
+   
+`;
 
 
-export const AddImageView = () => {
-    const initialTooltipState = {
-        position: '',
+
+const defaultItem = {
+    id: '',
+    imageUrl: '',
+    tooltip: {
+        position: 'bottom',
         text: '',
         textColor: '#000000',
         color: '#2AF7D8',
         error: ''
-    };
+    }
+};
 
-   const [tooltipState, setState] = useState(initialTooltipState);
-   const [imagePreviewUrl, uploadImagePreview] = useState(null);
+export const AddImageView = ({item: {tooltip, imageUrl} = defaultItem, onCloseClick}) => {
 
-   console.log('image', imagePreviewUrl);
+    console.log(tooltip);
+   const [tooltipState, setState] = useState(tooltip);
+
    return (
        <>
-           <UploadImage currentState={imagePreviewUrl} onChange={uploadImagePreview}/>
-           <TooltipForm onChange={setState} currentState={tooltipState}/>
-           {imagePreviewUrl ? <Image src={imagePreviewUrl} Tooltip={<Tooltip {...tooltipState}/>}/> : null}
-            </>
+           <Backdrop onClick={onCloseClick}/>
+           <StyledAddView>
+               <UploadImage imageUrl={imageUrl} tooltipState={tooltipState}/>
+               <TooltipForm onChange={setState} currentState={tooltipState}/>
+               <Button add>Create</Button>
+               <CloseBtn onClick={onCloseClick} />
+           </StyledAddView>
+       </>
    )
 };

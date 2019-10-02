@@ -2,10 +2,10 @@ import React from 'react';
 import {Image} from './Image';
 
 export const GridImage = props => {
-    const {onClick, Tooltip, ...imageProps} = props;
+    const {onClick, ...imageProps} = props;
     return (
         <div onClick={onClick} >
-            <Image {...imageProps} Tooltip={Tooltip}/>
+            <Image {...imageProps}/>
         </div>
     )
 };

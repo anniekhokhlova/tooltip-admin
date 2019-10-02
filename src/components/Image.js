@@ -1,38 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Tooltip} from "./Tooltip";
 
-const ImageContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-`;
-
-const StyledImage = styled.img`
-     width: 100%;
-`;
-
-const ImageWrapper = styled.div`
+export const Image = styled.div`
     position: relative;
     margin: 5px;
     width: ${({detailsView}) => detailsView ? '400px' : '250px'};
     height: ${({detailsView}) => detailsView ? '400px' : '250px'};
+    background: url(${({src}) => src}) no-repeat;
+    background-position: center;
+    background-size: cover;
 `;
-
-
-
-export const Image = ({detailsView, src, Tooltip = null}) => {
-    return (
-        <ImageWrapper detailsView={detailsView}>
-            <ImageContainer>
-                <StyledImage src={src} />
-            </ImageContainer>
-            {Tooltip}
-        </ImageWrapper>
-    )
-};
 

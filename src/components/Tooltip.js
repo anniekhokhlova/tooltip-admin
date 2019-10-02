@@ -9,19 +9,20 @@ const TooltipTriangle = css`
     `;
 
 const topTooltipCss = css`
-    bottom: calc(100% + 8px);
-    right: 0%;
+    bottom: 100%;
+    left: 50%;
     transform: translateX(-50%);
     
     &::after {
         top: 100%;
         left: 50%;
+         margin-left: -5px;
         border-color: ${({color}) => color} transparent transparent transparent;
     }
 `;
 
 const bottomTooltipCss = css`
-    top: calc(100% + 8px);
+    top: 100%;
     left: 50%;
     transform: translateX(-50%);
     
@@ -34,7 +35,7 @@ const bottomTooltipCss = css`
 `;
 
 const leftTooltipCss = css`
-    right: calc(100% + 6px);
+    right: 100%;
     top: 50%;
     transform: translateY(-50%);
     
@@ -47,7 +48,7 @@ const leftTooltipCss = css`
 `;
 
 const rightTooltipCss = css`
-    left: calc(100% + 6px);
+    left: 100%;
     top: 50%;
     transform: translateY(-50%);
     
@@ -60,24 +61,24 @@ const rightTooltipCss = css`
 `;
 
 const TOOLTIP_TRIANGLE_STYLES = {
-    'top' : topTooltipCss,
-    'bottom' : bottomTooltipCss,
-    'left' : leftTooltipCss,
-    'right' : rightTooltipCss,
+    'TOP' : topTooltipCss,
+    'BOTTOM' : bottomTooltipCss,
+    'LEFT' : leftTooltipCss,
+    'RIGHT' : rightTooltipCss,
 };
 
 const TooltipText = styled.span`
     position: absolute;
     visibility: hidden;
-    width: ${({width}) => width};
+    padding: 10px;
     background-color: ${({color}) => color};
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 5px 0;
     z-index: 99;
     opacity: 0;
     transition: opacity 0.3s;
+    margin: 2px;
     
     &::after {
         ${TooltipTriangle}
@@ -87,13 +88,8 @@ const TooltipText = styled.span`
 `;
 
 export const TooltipWrapper = styled.div`
-    position: absolute;
+    position: relative;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    
     display: 'block';
     
     &:hover > ${TooltipText} {
@@ -105,14 +101,14 @@ export const TooltipWrapper = styled.div`
 
 export const Tooltip = ({
     text,
-    position = 'bottom',
+    position = 'BOTTOM',
     children,
     color = 'red',
-    width = '120px'
+    textColor = 'white'
 }) => (
     <TooltipWrapper>
         {children}
-        <TooltipText width={width} position={position} color={color}>
+        <TooltipText position={position} color={color} textColor={textColor}>
             {text}
         </TooltipText>
     </TooltipWrapper>

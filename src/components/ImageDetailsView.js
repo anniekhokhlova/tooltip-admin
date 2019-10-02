@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import {Image} from "./Image";
 import {Button} from "./Button";
 import {Backdrop} from "./Backdrop";
 import {CloseBtn} from "./CloseBtn";
+import {Tooltip} from "./Tooltip";
+import {AddImageView} from "./AddImageView";
 
 const ButtonsContainer = styled.div`
     display: flex;
@@ -30,21 +32,31 @@ const StyledContainer = styled.div`
     z-index: 101;
 `;
 
-export const ImageDetailsView = ({src, Tooltip, isVisible, onCloseClick} ) => {
-    if (!isVisible) {
-        return null;
-    }
+export const ImageDetailsView = (props ) => {
+    console.log(props);
+    const { imageData, onCloseClick} = props;
+    const {imageUrl, tooltip} = imageData;
+    const [isModifying, setModifying] = useState(false);
+
+    const onUpdateClick = () => setModifying(true);
+
+    const closeModifyView = () => setModifying(false);
+
     return (
         <>
-            <Backdrop onClick={onCloseClick}/>
-            <StyledContainer>
-                <Image src={src} detailsView Tooltip={Tooltip} />
-                <ButtonsContainer>
-                    <Button add>Update</Button>
+            {isModifying ? <AddImageView item={imageData} onCloseClick={closeModifyView} /> :
+                <>
+                    <Backdrop onClick={onCloseClick}/>
+                    <StyledContainer>
+                    <Tooltip {...tooltip}><Image src={imageUrl} detailsView /></Tooltip>
+                    <ButtonsContainer>
+                    <Button add onClick={onUpdateClick}>Update</Button>
                     <Button remove>Remove</Button>
-                </ButtonsContainer>
-                <CloseBtn onClick={onCloseClick}/>
-            </StyledContainer>;
+                    </ButtonsContainer>
+                    <CloseBtn onClick={onCloseClick}/>
+                    </StyledContainer>
+                </>
+            }
         </>
     );
 }

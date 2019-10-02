@@ -7,9 +7,9 @@ import {TooltipForm} from "./components/AddTooltipForm";
 function App() {
   return (
     <div className="App">
-      {/*<Grid />*/}
+      <Grid />
       {/*<AddImageView/>*/}
-      <AddImageView/>
+      {/*<AddImageView/>*/}
     </div>
   )
 }

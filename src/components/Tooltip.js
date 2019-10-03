@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
 
-const TooltipTriangle = css`
+const tooltipTriangleCss = css`
     content: "";
     position: absolute;
     border-width: 5px;
@@ -82,7 +82,7 @@ const TooltipText = styled.span`
     transition: opacity 0.3s;
     
     &::after {
-        ${TooltipTriangle}
+        ${tooltipTriangleCss}
     }
     
     ${({position}) => TOOLTIP_TRIANGLE_STYLES[position]}

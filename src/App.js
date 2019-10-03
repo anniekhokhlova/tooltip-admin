@@ -1,11 +1,15 @@
 import React from 'react';
 import './App.css';
 import {Main} from './components/Main';
+import { ApolloProvider } from "@apollo/react-hooks";
+import { client } from './Apollo/client';
 
 function App() {
   return (
     <div className="App">
-      <Main/>
+        <ApolloProvider client={client}>
+            <Main/>
+        </ApolloProvider>
     </div>
   )
 }

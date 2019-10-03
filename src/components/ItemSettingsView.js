@@ -1,14 +1,19 @@
 import React, {useState} from 'react';
+import styled from 'styled-components';
+import {useMutation} from "@apollo/react-hooks";
 import {UploadImage} from "./UploadImage";
 import {TooltipForm} from './TooltipForm';
-import styled from 'styled-components';
 import {Button} from './Button';
 import {CloseBtn} from "./CloseBtn";
 import {Backdrop} from "./Backdrop";
 import {Modal} from "./Modal";
+import {updateItemMutation} from "../graphql/updateItem";
+import {createItemMutation} from "../graphql/createItem";
+import {getItemsQuery} from "../graphql/getItems";
+import {getItemQuery} from "../graphql/getItem";
 
 const StyledAddView = styled(Modal)`
-    width: 950px;
+    width: 60%;
     flex-flow: row nowrap;
     
     & > ${Button} {
@@ -18,7 +23,7 @@ const StyledAddView = styled(Modal)`
     }
 `;
 
-const defaultItem = {
+const DEFAULT_ITEM_PROPS = {
     id: '',
     imageUrl: null,
     tooltip: {
@@ -29,21 +34,40 @@ const defaultItem = {
     }
 };
 
-export const ItemSettingsView = ({item: {id, tooltip, imageUrl} = defaultItem, onCloseClick, changeItemHandler}) => {
+export const ItemSettingsView = ({item: {id, tooltip, imageUrl} = DEFAULT_ITEM_PROPS, onCloseClick}) => {
     const [tooltipState, setTooltipState] = useState(tooltip);
     const [imagePreviewUrl, setImagePreviewUrl] = useState(imageUrl);
 
-    const timestamp = Date.now();
-    const newItem = {imageUrl: imagePreviewUrl, tooltip: tooltipState, id: timestamp};
-
-    const onSubmit = () => {
-        console.log('here');
-        if (tooltipState.text.length === 0) {
-            console.log('not valid');
-        }
-    };
-
     const isDisabled = () => tooltipState.text.length === 0 || !imagePreviewUrl;
+
+    const isNew = !id;
+
+    const mutation = isNew ? createItemMutation : updateItemMutation;
+    const refetchQueries = isNew ?
+        [{
+            query: getItemsQuery
+        }] : [{
+            query: getItemsQuery
+        }, {
+            query: getItemQuery,
+            variables: { id }
+        }];
+
+    const [createOrUpdateItem] = useMutation(mutation, {
+        awaitRefetchQueries: true,
+        refetchQueries
+    });
+
+    const onSubmitClick = () => {
+        onCloseClick();
+        const input = {
+            imageUrl: imagePreviewUrl,
+            tooltip: tooltipState
+        };
+
+        const variables = isNew ? { input } : { id, input };
+        createOrUpdateItem({ variables })
+    };
 
    return (
        <>
@@ -51,7 +75,7 @@ export const ItemSettingsView = ({item: {id, tooltip, imageUrl} = defaultItem, o
            <StyledAddView>
                <UploadImage imageUrl={imagePreviewUrl} tooltipState={tooltipState} setImagePreviewUrl={setImagePreviewUrl}/>
                <TooltipForm onChange={setTooltipState} tooltipState={tooltipState}/>
-               <Button add onClick={changeItemHandler(newItem)} disabled={isDisabled()}>Submit</Button>
+               <Button add onClick={onSubmitClick} disabled={isDisabled()}>Submit</Button>
                <CloseBtn onClick={onCloseClick} />
            </StyledAddView>
        </>

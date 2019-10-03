@@ -10,7 +10,7 @@ const StyledUploadImageView = styled.div`
     justify-content:center;
 `;
 
-const StyledDropImage = styled.div`
+const StyledDropContainer = styled.div`
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -40,20 +40,20 @@ const FileInput = styled.input`
 `;
 
 const InputLabel = styled.label`
-        outline: none;
-        white-space: nowrap;
-        cursor: pointer;
-        font-size: 14px;
-        background: #39D2B4;
-        color: #fff;
-        transition: all .4s;
-        padding: 4px 5px;
-        text-align: center;
-        vertical-align: middle;
-        line-height: 35px;
-        width: 160px;
-        height: 35px;
-        margin-bottom: 55px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 14px;
+    background: #39D2B4;
+    color: #fff;
+    transition: all .4s;
+    padding: 4px 5px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 35px;
+    width: 160px;
+    height: 35px;
+    margin-bottom: 55px;
     
     &:hover, &:active, &:focus {
         background: #34495E;
@@ -61,11 +61,10 @@ const InputLabel = styled.label`
     }
 `;
 
-
 export const UploadImage = ({tooltipState, imageUrl, setImagePreviewUrl}) => {
     const [isDragged, setDragged] = useState(false);
 
-    const previewImg = (file) => {
+    const previewImg = file => {
         let reader = new FileReader();
         reader.onloadend = () => setImagePreviewUrl(reader.result);
         reader.readAsDataURL(file);
@@ -74,8 +73,7 @@ export const UploadImage = ({tooltipState, imageUrl, setImagePreviewUrl}) => {
     const onDrop = (e) => {
         e.preventDefault();
         setDragged(false);
-        let dt = e.dataTransfer;
-        let file = dt.files[0];
+        let file = e.dataTransfer.files[0];
 
         checkType(file)
     };
@@ -90,36 +88,46 @@ export const UploadImage = ({tooltipState, imageUrl, setImagePreviewUrl}) => {
         setDragged(false);
     };
 
-    const checkType = (file) => {
+    const checkType = file => {
         let imageType = /image.*/;
         if (!file) {
-            alert('do not see image');
+            alert('Please upload the image');
         } else if (!file.type.match(imageType)) {
-            alert('not image')}  else {
+            alert('Only png, jpg and gif are supported')
+        } else {
             previewImg(file);
         }
     };
 
-    const handleImageChange = (e) => {
-        let file = e.target.files[0];
+    const handleImageChange = ({target : {files}}) => {
+        let file = files[0];
         checkType(file);
     };
 
     return (
         <StyledUploadImageView>
-            <FileInput type="file"
-                       id='file'
-                       accept="image/*"
-                       onChange={handleImageChange} />
-                       <InputLabel htmlFor='file'>Select an image...</InputLabel>
-            {!imageUrl ? <StyledDropImage isDragged={isDragged}
-                                                 onDrop={onDrop}
-                                                 onDragEnter={onDragEvents}
-                                                 onDragOver={onDragEvents}
-                                                 onDragLeave={onDragLeave} ><p>...or drag it here</p></StyledDropImage>
-                :
-                <Tooltip {...tooltipState}><Image src={imageUrl} /></Tooltip> }
+            <FileInput
+                type="file"
+                id='file'
+               accept="image/*"
+               onChange={handleImageChange}
+            />
+            <InputLabel htmlFor='file'>
+                Select an image...
+            </InputLabel>
+            {!imageUrl ?
+                <StyledDropContainer
+                    isDragged={isDragged}
+                    onDrop={onDrop}
+                    onDragEnter={onDragEvents}
+                    onDragOver={onDragEvents}
+                    onDragLeave={onDragLeave} >
+                    <p>...or drag it here</p>
+                </StyledDropContainer> :
+                <Tooltip {...tooltipState}>
+                    <Image src={imageUrl} />
+                </Tooltip>
+            }
         </StyledUploadImageView>
-
     )
 };

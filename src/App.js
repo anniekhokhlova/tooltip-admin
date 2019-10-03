@@ -1,15 +1,11 @@
 import React from 'react';
 import './App.css';
-import {Grid} from './components/Grid';
-import {AddImageView} from "./components/AddImageView";
-import {TooltipForm} from "./components/AddTooltipForm";
+import {Main} from './components/Main';
 
 function App() {
   return (
     <div className="App">
-      <Grid />
-      {/*<AddImageView/>*/}
-      {/*<AddImageView/>*/}
+      <Main/>
     </div>
   )
 }

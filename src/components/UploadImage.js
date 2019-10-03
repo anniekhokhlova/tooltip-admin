@@ -62,8 +62,7 @@ const InputLabel = styled.label`
 `;
 
 
-export const UploadImage = ({tooltipState, imageUrl}) => {
-    const [imagePreviewUrl, setImagePreviewUrl] = useState(imageUrl);
+export const UploadImage = ({tooltipState, imageUrl, setImagePreviewUrl}) => {
     const [isDragged, setDragged] = useState(false);
 
     const previewImg = (file) => {
@@ -93,11 +92,10 @@ export const UploadImage = ({tooltipState, imageUrl}) => {
 
     const checkType = (file) => {
         let imageType = /image.*/;
-        if (!file.type.match(imageType)) {
-            alert('not image');
-        } else if (!file){
-            console.log('dont see file');
-        } else {
+        if (!file) {
+            alert('do not see image');
+        } else if (!file.type.match(imageType)) {
+            alert('not image')}  else {
             previewImg(file);
         }
     };
@@ -114,12 +112,13 @@ export const UploadImage = ({tooltipState, imageUrl}) => {
                        accept="image/*"
                        onChange={handleImageChange} />
                        <InputLabel htmlFor='file'>Select an image...</InputLabel>
-            <StyledDropImage isDragged={isDragged} onDrop={onDrop}
-                                onDragEnter={onDragEvents}
-                                onDragOver={onDragEvents}
-                                onDragLeave={onDragLeave} >
-                {imagePreviewUrl ? <Tooltip {...tooltipState}><Image src={imagePreviewUrl} detailsView/></Tooltip> : <p>...or drag it here</p> }
-            </StyledDropImage>
+            {!imageUrl ? <StyledDropImage isDragged={isDragged}
+                                                 onDrop={onDrop}
+                                                 onDragEnter={onDragEvents}
+                                                 onDragOver={onDragEvents}
+                                                 onDragLeave={onDragLeave} ><p>...or drag it here</p></StyledDropImage>
+                :
+                <Tooltip {...tooltipState}><Image src={imageUrl} /></Tooltip> }
         </StyledUploadImageView>
 
     )

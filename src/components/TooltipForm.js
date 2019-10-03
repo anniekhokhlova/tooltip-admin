@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const FormWrapper = styled.div`
@@ -12,8 +12,7 @@ const FormWrapper = styled.div`
 const FormHeader = styled.div`
     margin: 0;
     margin-bottom: 15px;
-    `;
-
+`;
 
 const Form = styled.form`
     margin: 40px 15px;
@@ -35,9 +34,7 @@ const Label = styled.label`
     display: flex;
     align-items: center;
     margin-right: 10px;
-    
 `;
-
 
 const Input = styled.div`
     display: flex;
@@ -68,19 +65,12 @@ const ColorInput = styled(InputElement)`
     height: 35px;
 `;
 
-export const TooltipForm = (props) => {
-    console.log(props);
-    const mySubmitHandler = (event) => {
-        event.preventDefault();
-        let age = this.state.age;
-        if (!Number(age)) {
-            alert("Your age must be a number");
-        }
-    }
+export const TooltipForm = ({onChange, tooltipState}) => {
+    const { text, position, textColor, color } = tooltipState;
 
    const onChangeHandler = ({target}) => {
         const {name, value} = target;
-        props.onChange({...props.currentState, [name]: value});
+        onChange({...tooltipState, [name]: value});
     };
 
         return (
@@ -93,7 +83,7 @@ export const TooltipForm = (props) => {
                             type='text'
                             name='text'
                             onChange={onChangeHandler}
-                            value={props.currentState.text}
+                            value={text}
                             placeholder='Tooltip text'
                         />
                     </Input>
@@ -103,7 +93,7 @@ export const TooltipForm = (props) => {
                             type='color'
                             name='color'
                             onChange={onChangeHandler}
-                            value={props.currentState.color}
+                            value={color}
                         />
                     </Input>
                     <Input>
@@ -112,12 +102,12 @@ export const TooltipForm = (props) => {
                             type='color'
                             name='textColor'
                             onChange={onChangeHandler}
-                            value={props.currentState.textColor}
+                            value={textColor}
                         />
                     </Input>
                     <Input>
                         <Label>Position</Label>
-                        <select name='position' onChange={onChangeHandler} value={props.currentState.position}>
+                        <select name='position' onChange={onChangeHandler} value={position}>
                             <option value="BOTTOM">Bottom</option>
                             <option value="TOP">Top</option>
                             <option value="LEFT">Left</option>
@@ -127,4 +117,4 @@ export const TooltipForm = (props) => {
                 </Form>
             </FormWrapper>
         );
-}
+};

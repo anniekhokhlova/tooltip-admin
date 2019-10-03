@@ -6,7 +6,7 @@ const TooltipTriangle = css`
     position: absolute;
     border-width: 5px;
     border-style: solid;
-    `;
+`;
 
 const topTooltipCss = css`
     bottom: 100%;
@@ -16,7 +16,7 @@ const topTooltipCss = css`
     &::after {
         top: 100%;
         left: 50%;
-         margin-left: -5px;
+        margin-left: -5px;
         border-color: ${({color}) => color} transparent transparent transparent;
     }
 `;
@@ -55,7 +55,7 @@ const rightTooltipCss = css`
     &::after {
         top: 50%;
         right: 100%;
-         margin-top: -5px;
+        margin-top: -5px;
         border-color: transparent ${({color}) => color} transparent transparent;
     }
 `;
@@ -69,16 +69,17 @@ const TOOLTIP_TRIANGLE_STYLES = {
 
 const TooltipText = styled.span`
     position: absolute;
+    width: fit-content;
     visibility: hidden;
+    margin: 2px;
     padding: 10px;
     background-color: ${({color}) => color};
-    color: #fff;
+    color: ${({textColor}) => textColor};
     text-align: center;
     border-radius: 6px;
     z-index: 99;
     opacity: 0;
     transition: opacity 0.3s;
-    margin: 2px;
     
     &::after {
         ${TooltipTriangle}
@@ -87,7 +88,7 @@ const TooltipText = styled.span`
     ${({position}) => TOOLTIP_TRIANGLE_STYLES[position]}
 `;
 
-export const TooltipWrapper = styled.div`
+const TooltipWrapper = styled.div`
     position: relative;
     cursor: pointer;
     display: 'block';
@@ -97,7 +98,6 @@ export const TooltipWrapper = styled.div`
         opacity: 1;
     }
 `;
-
 
 export const Tooltip = ({
     text,
@@ -112,5 +112,4 @@ export const Tooltip = ({
             {text}
         </TooltipText>
     </TooltipWrapper>
-
-    );
+);

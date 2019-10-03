@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const StyledCloseBtn = styled.div`
+export const CloseBtn = styled.div`
     position: absolute;
     right: 20px;
     top: 20px;
@@ -21,12 +20,12 @@ const StyledCloseBtn = styled.div`
       width: 2px;
       background-color: #333;
     }
+    
     &:before {
       transform: rotate(45deg);
     }
+    
     &:after {
       transform: rotate(-45deg);
     }
 `;
-
-export const CloseBtn = ({onClick}) => <StyledCloseBtn onClick={onClick} />;

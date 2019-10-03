@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 const RemoveButton = `
@@ -46,6 +45,11 @@ export const Button = styled.button`
         height: 35px;
         line-height: 1;
         box-sizing: border-box;
+        
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
         
         ${({add}) => add ? AddButton : ''}
         ${({remove}) => remove ? RemoveButton : ''}

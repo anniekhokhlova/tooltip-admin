@@ -12,7 +12,7 @@ export const StyledMain = styled.div`
     & > ${AddButton} {
             position: fixed;
             bottom: 20px;
-            right: 45px;
+            right: 80px;
         }
 `;
 

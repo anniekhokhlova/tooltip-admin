@@ -6,9 +6,10 @@ export const Tooltip = ({
     position = 'BOTTOM',
     children,
     color = 'red',
-    textColor = 'white'
+    textColor = 'white',
+    detailsView = false
 }) => (
-    <TooltipWrapper>
+    <TooltipWrapper detailsView={detailsView}>
         {children}
         <TooltipText position={position} color={color} textColor={textColor}>
             {text}

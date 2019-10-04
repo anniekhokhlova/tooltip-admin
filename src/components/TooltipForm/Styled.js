@@ -17,7 +17,6 @@ export const Form = styled.form`
     width: 80%;
     display: flex;
     flex-flow: column nowrap;
-    height: 250px;
     justify-content: center;
     text-align: center;
     box-sizing: border-box;
@@ -26,6 +25,7 @@ export const Form = styled.form`
     border-radius: 4px;
     color: #2b2b2b;
     margin: 40px 15px;
+    padding: 7%;
 `;
 
 export const Label = styled.label`
@@ -51,6 +51,7 @@ export const InputElement = styled.input`
     font: inherit;
     display: block;
     padding:5px;
+    width: 60%;
     
     &:focus {
         outline: none;

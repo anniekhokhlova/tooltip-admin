@@ -7,7 +7,7 @@ const StyledGrid = styled.div`
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    width: calc(100% - 440px);
+    width: calc(100% - 20%);
     margin-top: 40px;
 `;
 

@@ -79,6 +79,7 @@ export const TooltipText = styled.span`
     z-index: 99;
     opacity: 0;
     transition: opacity 0.3s;
+    margin: 7px;
     
     &::after {
         ${tooltipTriangleCss}
@@ -91,6 +92,8 @@ export const TooltipWrapper = styled.div`
     position: relative;
     cursor: pointer;
     display: 'block';
+    width: ${({detailsView}) => detailsView ? '60%' : '20%'};
+    margin: 5px;
     
     &:hover > ${TooltipText} {
         visibility: visible;

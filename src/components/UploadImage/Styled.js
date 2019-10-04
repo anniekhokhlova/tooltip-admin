@@ -5,6 +5,7 @@ export const StyledUploadImageView = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content:center;
+    width: 50%;
 `;
 
 export const StyledDropContainer = styled.div`
@@ -12,8 +13,8 @@ export const StyledDropContainer = styled.div`
     flex-flow: column nowrap;
     align-items: center;
     justify-content:center;
-    width: 400px;
-    height: 400px;
+    width: 90%;
+    padding-top: 100%;
     outline: 1px dashed #2b2b2b;
     align-self: center;
 
@@ -50,10 +51,17 @@ export const InputLabel = styled.label`
     line-height: 35px;
     width: 160px;
     height: 35px;
-    margin-bottom: 55px;
+    margin-bottom: 35px;
     
     &:hover, &:active, &:focus {
         background: #34495E;
         color: #39D2B4;
     }
+`;
+
+export const DragText = styled.span`
+    height: 0;
+    display: flex;
+    position: absolute;
+    top: 55%;
 `;

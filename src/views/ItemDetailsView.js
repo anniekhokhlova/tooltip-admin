@@ -42,8 +42,8 @@ export const ItemDetailsView = ({ id, onCloseClick, onRemoveClick }) => {
         <>
             <Backdrop onClick={onCloseClick}/>
             <StyledItemDetails>
-                <Tooltip {...currentItem.tooltip}>
-                    <Image src={currentItem.imageUrl} detailsView />
+                <Tooltip detailsView {...currentItem.tooltip}>
+                    <Image src={currentItem.imageUrl} />
                 </Tooltip>
             <ButtonsContainer>
                 <Button update onClick={onUpdateClick}>Update</Button>

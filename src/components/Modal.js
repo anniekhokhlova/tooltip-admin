@@ -6,10 +6,9 @@ export const Modal = styled.div`
     justify-content: center;
     position: fixed;
     top: 5%;
-    height: 600px;
     border: 1px solid #eee;
     box-shadow: 0 1px 1px #ccc;
-    padding: 10px;
+    padding: 2%;
     margin: 10px auto;
     box-sizing: border-box;
     background-color: #f7fcff;

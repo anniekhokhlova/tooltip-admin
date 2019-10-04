@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Image } from "../Image";
 import { Tooltip } from "../Tooltip";
-import { StyledUploadImageView, StyledDropContainer, FileInput, InputLabel } from "./Styled"
+import { StyledUploadImageView, StyledDropContainer, FileInput, InputLabel, DragText } from "./Styled"
 
 export const UploadImage = ({tooltipState, imageUrl, setImagePreviewUrl}) => {
     const [isDragged, setDragged] = useState(false);
@@ -64,9 +64,9 @@ export const UploadImage = ({tooltipState, imageUrl, setImagePreviewUrl}) => {
                     onDragEnter={onDragEvents}
                     onDragOver={onDragEvents}
                     onDragLeave={onDragLeave} >
-                    <p>...or drag it here</p>
+                    <DragText>...or drag it here</DragText>
                 </StyledDropContainer> :
-                <Tooltip {...tooltipState}>
+                <Tooltip detailsView {...tooltipState}>
                     <Image src={imageUrl} />
                 </Tooltip>
             }

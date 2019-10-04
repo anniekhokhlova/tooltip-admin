@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Main} from './components/Main';
+import { Main } from './views/Main';
 import { ApolloProvider } from "@apollo/react-hooks";
 import { client } from './Apollo/client';
 

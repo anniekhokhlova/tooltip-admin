@@ -13,6 +13,12 @@ const executableSchema = makeExecutableSchema({
 
 const cache = new InMemoryCache({ addTypename: false });
 
+/*
+    For using real server use HttpLink with needed config from 'apollo-link-http' npm package:
+
+    const link = new HttpLink()
+*/
+
 const link = new SchemaLink({ schema: executableSchema });
 
 export const client = new ApolloClient({

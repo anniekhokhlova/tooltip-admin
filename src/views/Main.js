@@ -1,25 +1,14 @@
-import React, {useState} from 'react';
-import styled from 'styled-components';
-import {Button} from "./Button";
-import {Grid} from "./Grid";
-import {ItemDetailsView} from "./ItemDetailsView";
-import {ItemSettingsView} from "./ItemSettingsView";
+import React, { useState } from 'react';
+import { AddButton } from "../components/AddButton";
+import { Spinner } from '../components/Spinner';
+import { Grid } from "../components/Grid";
+import { ItemDetailsView } from "./ItemDetailsView";
+import { ItemSettingsView } from "./ItemSettingsView";
 import { useQuery, useMutation } from "react-apollo";
-import {getItemsQuery } from '../graphql/getItems';
-import {deleteItemMutation} from "../graphql/deleteItem";
-import {updateItem} from "../graphql/updateItem";
+import { getItemsQuery } from '../graphql/getItems';
+import { deleteItemMutation } from "../graphql/deleteItem";
+import { StyledMain } from './Styled';
 
-const StyledMain = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    & > ${Button} {
-            position: fixed;
-            bottom: 20px;
-            right: 40px;
-        }
-`;
 
 export const Main = () => {
     const {data, loading, error} = useQuery(getItemsQuery);
@@ -49,7 +38,7 @@ export const Main = () => {
     };
 
     if (loading || error) {
-        return null;
+        return <Spinner/>;
     }
 
     const { items } = data;
@@ -57,7 +46,7 @@ export const Main = () => {
     return (
         <StyledMain>
             <Grid data={items} onImageClick={onImageClick}/>
-            <Button add onClick={onAddButtonClick}>Add</Button>
+            <AddButton update onClick={onAddButtonClick}>+</AddButton>
             { detailedViewIsOpened &&
                 <ItemDetailsView
                     id={activeItemId}

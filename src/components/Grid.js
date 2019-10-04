@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Image} from "./Image";
-import {Tooltip} from "./Tooltip";
+import { Image } from "./Image";
+import { Tooltip } from "./Tooltip/";
 
 const StyledGrid = styled.div`
     display: flex;

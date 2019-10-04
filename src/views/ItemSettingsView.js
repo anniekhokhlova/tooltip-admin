@@ -1,27 +1,15 @@
-import React, {useState} from 'react';
-import styled from 'styled-components';
-import {useMutation} from "@apollo/react-hooks";
-import {UploadImage} from "./UploadImage";
-import {TooltipForm} from './TooltipForm';
-import {Button} from './Button';
-import {CloseBtn} from "./CloseBtn";
-import {Backdrop} from "./Backdrop";
-import {Modal} from "./Modal";
-import {updateItemMutation} from "../graphql/updateItem";
-import {createItemMutation} from "../graphql/createItem";
-import {getItemsQuery} from "../graphql/getItems";
-import {getItemQuery} from "../graphql/getItem";
-
-const StyledAddView = styled(Modal)`
-    width: 60%;
-    flex-flow: row nowrap;
-    
-    & > ${Button} {
-        position: absolute;
-        bottom: 3%;
-        right: 3%;
-    }
-`;
+import React, { useState } from 'react';
+import { useMutation } from "@apollo/react-hooks";
+import { UploadImage } from "../components/UploadImage";
+import { TooltipForm } from '../components/TooltipForm';
+import { Button } from '../components/Button';
+import { CloseButton } from "../components/CloseButton";
+import { Backdrop } from "../components/Backdrop";
+import { updateItemMutation } from "../graphql/updateItem";
+import { createItemMutation } from "../graphql/createItem";
+import { getItemsQuery } from "../graphql/getItems";
+import { getItemQuery } from "../graphql/getItem";
+import { StyledAddView } from './Styled';
 
 const DEFAULT_ITEM_PROPS = {
     id: '',
@@ -42,7 +30,10 @@ export const ItemSettingsView = ({item: {id, tooltip, imageUrl} = DEFAULT_ITEM_P
 
     const isNew = !id;
 
-    const mutation = isNew ? createItemMutation : updateItemMutation;
+    const mutation = isNew ?
+        createItemMutation :
+        updateItemMutation;
+
     const refetchQueries = isNew ?
         [{
             query: getItemsQuery
@@ -59,14 +50,17 @@ export const ItemSettingsView = ({item: {id, tooltip, imageUrl} = DEFAULT_ITEM_P
     });
 
     const onSubmitClick = () => {
-        onCloseClick();
         const input = {
             imageUrl: imagePreviewUrl,
             tooltip: tooltipState
         };
 
-        const variables = isNew ? { input } : { id, input };
-        createOrUpdateItem({ variables })
+        const variables = isNew ?
+            { input } :
+            { id, input };
+
+        createOrUpdateItem({ variables });
+        onCloseClick();
     };
 
    return (
@@ -75,8 +69,8 @@ export const ItemSettingsView = ({item: {id, tooltip, imageUrl} = DEFAULT_ITEM_P
            <StyledAddView>
                <UploadImage imageUrl={imagePreviewUrl} tooltipState={tooltipState} setImagePreviewUrl={setImagePreviewUrl}/>
                <TooltipForm onChange={setTooltipState} tooltipState={tooltipState}/>
-               <Button add onClick={onSubmitClick} disabled={isDisabled()}>Submit</Button>
-               <CloseBtn onClick={onCloseClick} />
+               <Button update onClick={onSubmitClick} disabled={isDisabled()}>Submit</Button>
+               <CloseButton onClick={onCloseClick} />
            </StyledAddView>
        </>
    )

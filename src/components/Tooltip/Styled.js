@@ -1,5 +1,4 @@
-import React from 'react';
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const tooltipTriangleCss = css`
     content: "";
@@ -67,7 +66,7 @@ const TOOLTIP_TRIANGLE_STYLES = {
     'RIGHT' : rightTooltipCss,
 };
 
-const TooltipText = styled.span`
+export const TooltipText = styled.span`
     position: absolute;
     width: fit-content;
     visibility: hidden;
@@ -88,7 +87,7 @@ const TooltipText = styled.span`
     ${({position}) => TOOLTIP_TRIANGLE_STYLES[position]}
 `;
 
-const TooltipWrapper = styled.div`
+export const TooltipWrapper = styled.div`
     position: relative;
     cursor: pointer;
     display: 'block';
@@ -98,18 +97,3 @@ const TooltipWrapper = styled.div`
         opacity: 1;
     }
 `;
-
-export const Tooltip = ({
-    text,
-    position = 'BOTTOM',
-    children,
-    color = 'red',
-    textColor = 'white'
-}) => (
-    <TooltipWrapper>
-        {children}
-        <TooltipText position={position} color={color} textColor={textColor}>
-            {text}
-        </TooltipText>
-    </TooltipWrapper>
-);

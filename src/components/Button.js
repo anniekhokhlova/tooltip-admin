@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const removeButtonCss = css`
     color: white;
@@ -12,7 +12,7 @@ const removeButtonCss = css`
     }
 `;
 
-const addButtonCss = css`
+const updateButtonCss = css`
     color: #e7692a;
     background-color: transparent;
     border-color: #e7692a;
@@ -40,7 +40,7 @@ export const Button = styled.button`
         cursor: not-allowed;
     }
     
-    ${({add}) => add && addButtonCss}
+    ${({update}) => update && updateButtonCss}
     ${({remove}) => remove && removeButtonCss}
 `;
 

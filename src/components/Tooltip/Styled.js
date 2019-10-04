@@ -11,6 +11,7 @@ const topTooltipCss = css`
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
+    margin: 7px 0 0 0;
     
     &::after {
         top: 100%;
@@ -24,6 +25,7 @@ const bottomTooltipCss = css`
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
+    margin: 7px 0 0 0;
     
     &::after {
         bottom: 100%;
@@ -37,6 +39,7 @@ const leftTooltipCss = css`
     right: 100%;
     top: 50%;
     transform: translateY(-50%);
+    margin: 0 7px 0 0;
     
     &::after {
         top: 50%;
@@ -50,6 +53,7 @@ const rightTooltipCss = css`
     left: 100%;
     top: 50%;
     transform: translateY(-50%);
+    margin: 0 0 0 7px;
     
     &::after {
         top: 50%;

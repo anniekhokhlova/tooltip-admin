@@ -12,7 +12,7 @@ import { StyledItemDetails, ButtonsContainer } from "./Styled";
 
 
 export const ItemDetailsView = ({ id, onCloseClick, onRemoveClick }) => {
-    const [isModifying, setModifying] = useState(false);
+    const [isSettingsViewOpened, setSettingsView] = useState(false);
 
     const { data, loading, error } = useQuery(getItemQuery, {
         variables: { id }
@@ -24,12 +24,12 @@ export const ItemDetailsView = ({ id, onCloseClick, onRemoveClick }) => {
 
     const currentItem = data.item;
 
-    const onUpdateClick = () => setModifying(true);
+    const onUpdateClick = () => setSettingsView(true);
     const closeModifyView = () => {
         onCloseClick()
     }
 
-    if (isModifying) {
+    if (isSettingsViewOpened) {
         return (
             <ItemSettingsView
                 item={currentItem}

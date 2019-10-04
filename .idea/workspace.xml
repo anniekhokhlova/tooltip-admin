@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69a75614-d3ab-428a-be85-37ee8f4aa1d4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Grid.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Grid.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Image.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Image.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Tooltip/Styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tooltip/Styled.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Tooltip/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tooltip/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TooltipForm/Styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TooltipForm/Styled.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UploadImage/Styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UploadImage/Styled.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UploadImage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UploadImage/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/ItemDetailsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/ItemDetailsView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Styled.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -83,10 +73,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/UploadImage/Styled.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
+            <state relative-caret-position="146">
               <caret line="53" column="21" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
             </state>
           </provider>
@@ -122,11 +112,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/ItemDetailsView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="989">
-              <caret line="43" column="30" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="30" />
+            <state relative-caret-position="483">
+              <caret line="34" column="21" lean-forward="true" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -142,6 +132,8 @@
       <find>imagePreviewUrl</find>
       <find>activeItemId</find>
       <find>load</find>
+      <find>Mo</find>
+      <find>Modi</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -184,7 +176,6 @@
         <option value="$PROJECT_DIR$/src/views/Main.js" />
         <option value="$PROJECT_DIR$/src/components/AddButton.js" />
         <option value="$PROJECT_DIR$/src/components/Image.js" />
-        <option value="$PROJECT_DIR$/src/views/ItemDetailsView.js" />
         <option value="$PROJECT_DIR$/src/components/Tooltip/index.js" />
         <option value="$PROJECT_DIR$/src/components/Modal.js" />
         <option value="$PROJECT_DIR$/src/views/Styled.js" />
@@ -193,6 +184,7 @@
         <option value="$PROJECT_DIR$/src/components/TooltipForm/Styled.js" />
         <option value="$PROJECT_DIR$/src/components/Tooltip/Styled.js" />
         <option value="$PROJECT_DIR$/src/components/UploadImage/Styled.js" />
+        <option value="$PROJECT_DIR$/src/views/ItemDetailsView.js" />
       </list>
     </option>
   </component>
@@ -303,12 +295,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1569953677304</updated>
-      <workItem from="1569953680382" duration="71542000" />
+      <workItem from="1569953680382" duration="71728000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71542000" />
+    <option name="totallyTimeSpent" value="71728000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="801" extended-state="6" />
@@ -622,16 +614,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/ItemDetailsView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="989">
-          <caret line="43" column="30" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/Styled.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="598">
@@ -695,8 +677,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/UploadImage/Styled.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
+        <state relative-caret-position="146">
           <caret line="53" column="21" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/ItemDetailsView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="34" column="21" lean-forward="true" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
